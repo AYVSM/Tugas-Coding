@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is it my birthday</title>
+    <style>
+         * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .running-text-box {
+            position: fixed;
+            left: 0px;
+            bottom: 0px;
+            height: 80px;
+            width: 300vw;
+            background-color: inherit;
+            display: flex;
+            align-items: center;
+        }
+
+        .running-text-box > p {
+            background-color: inherit;
+            color: blue;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0px 5px;
+            font-size: 18pt;
+            position: relative;
+            animation: runningText 10s infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes runningText {
+            from {
+                left: 0px;
+            }
+            to {
+                left: -1000px;
+            }
+        }
+
+        p {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* ------------- */
+        body {
+        background-image: linear-gradient(to bottom left, red, yellow, green);
+        box-sizing: border-box;
+        border: 10px solid black;
+        }
+
+        div{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div.left {
+            float: left;
+            margin-right: 20px;
+        }
+
+        h1 {
+            font-size: 200px;
+            color: red;
+        }
+
+        h1.h1 {
+            font-style: italic;
+        }
+
+        h1.Answer {
+            font-size: 100px;
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        img {
+            height: 500px;
+        }
+
+        p.isit {
+            margin-top: 100px;
+            font-size: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        p.Hak {
+            height: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: black;
+        }
+
+        div.right {
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <img src="assets/Spongebob.png" alt="">
+    </div>
+    <p class="isit" style="color: brown;">Is It My Birthday?🤔</p>
+    <div class="right">
+        <h1 class="Answer">The Answer:</h1>
+        <h1 id="h1"></h1>
+    </div>
+    <p class="Hak">&copy;02-02-2008, Albert Valentino 10.1</p>
+    <div class="running-text-box">
+    <p>======================================================By:Albert Valentino 10.1===================================================By:Albert Valentino 10.1===============================================By:Albert Valentino 10.1===============================================By:Albert Valentino 10.1===============================================By:Albert Valentino 10.1</p>
+    </div>
+</body>
+<script>
+    let date = new Date();
+    // console.log(date.getDay(),date.getMonth(), date.getDate());
+    // console.log(date.getDate() === 11 && date.getMonth === 9);
+    // if (date.getDate() === 11 && date.getMonth === 9)
+    //     h1.innerHTML = ("YES");
+    // else
+    //     h1.innerHTML = ("NO");
+
+    (date.getDate() === 18 && date.getMonth === 9) ? msg = "YES" : msg = "NO"; 
+    h1.innerHTML = msg
+</script>
+</html>
