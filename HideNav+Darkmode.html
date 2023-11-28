@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        let darkInfo;
+        if (!localStorage.getItem("dark"))
+            localStorage.setItem("dark", false); 
+        darkInfo = JSON.parse(localStorage.getItem("dark"));
+
+        const switchDark = () =>{
+            // document.querySelector("body").classList.toggle('dark');
+            // document.querySelector(".dark-mode-icon").classList.toggle('dark');
+
+            // if (darkInfo){
+            //     document.querySelector("body").classList.add('dark');
+            //     document.querySelector(".dark-mode.icon").classList.add('dark');
+            // } else {
+            //     document.querySelector("body").classList.remove('dark');
+            //     document.querySelector(".dark-mode.icon").classList.remove('dark');
+            // }
+
+            document.querySelector("body").classList.add('dark');
+            document.querySelector(".dark-mode-icon").classList.add('dark')
+        }
+
+        const switchLight = () => {
+            document.querySelector("body").classList.remove('dark');
+            document.querySelector(".dark-mode-icon").classList.remove('dark')
+        }
+
+
+        if (darkInfo === true)
+            switchDark();
+        else
+            switchLight();
+
+        document.querySelector(".circle").addEventListener('click', () => {
+            // alert("click!");
+
+            // darkInfo = !darkInfo;
+            if (darkInfo){
+                darkInfo = false;
+                switchLight();
+            } else {
+                darkInfo = true;
+                switchDark();
+            }
+            localStorage.setItem("dark", darkInfo);
+        })
+
+        })
+    </script>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: yellow;
+        }
+
+        nav {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 20px;
+            height: 80px;
+            background-color: salmon;
+        }
+
+        li {
+            list-style-type: none;
+            display: inline-block;
+            margin-left: 30px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .menu-icon {
+            display: none;
+            width: 50px;
+            height: 50px;
+            /* border: 1px black solid; */
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 40px;
+            height: 5px;
+            background-color: black;
+            margin: 8px auto;
+        }
+
+        @media screen and (max-width: 576px) {
+            h1 {
+                display: none;
+            }
+
+            ul {
+                position: absolute;
+                right: 0px;
+                top: 80px;
+                background-color: blueviolet;
+                height: calc(100vh - 80px);
+                width: 250px;
+                display: none;
+                flex-direction: column;
+                gap: 50px;
+                padding-top: 50px;
+            }
+
+            ul.show {
+                display: flex;
+            }
+
+            ul li {
+                margin: 0px;
+                padding: 0px;
+            }
+
+            ul li a {
+                display: block;
+                background-color: whitesmoke;
+                font-size: 24px;
+                border-bottom: 3px solid black;
+            }
+
+            ul li.h a::before {
+                content: "❤️";
+            }
+
+            ul li.a a::before {
+                content: "🚩";
+            }
+
+            ul li.p a::before {
+                content: "🌍";
+            }
+
+            .menu-icon {
+                display: block;
+            }
+       }
+       /* ======================================== */
+       body {
+            transition: background-color 1s ease;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: white;
+            border: 2px solid gray;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+
+        .circle:hover {
+            background-color: gray;
+        }
+
+        .dark .circle:hover {
+            background-color: #FFFFFFFF;
+        }
+
+        .circle span {
+            font-size: 24px;
+        }
+
+        .circle span.dark-mode-icon::after {
+            content: "on";
+            color: black;
+        }
+
+        .circle span.dark-mode-icon.dark::after {
+            content: "off";
+            background-color: #FFFFFFFF;
+            color: black;
+        }
+
+        .dark {
+            color: whitesmoke;
+            background-color: rgb(40, 40, 40);
+            transition: background-color 1s ease;
+        }
+
+        h1 {
+           margin-right: 700px;
+        }
+
+        h1.Albert {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 500px;
+            color: white;
+        }
+</style>
+    <title>My Website</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="circle">
+                <span class="dark-mode-icon"></span>
+            </div>
+            <h1><=Dark Mode</h1>
+            <ul id="menu">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Profile</a>
+                </li>
+            </ul>
+
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                document.querySelector(".menu-icon").addEventListener('click', () => {
+                    document.getElementById("menu").classList.toggle('show')
+                    localStorage.setItem('show', !showInfo)
+                })
+                let showInfo;
+            if (!localStorage.getItem('show'))
+                localStorage.setItem('show, false');
+
+                showInfo = JSON.parse(localStorage.getItem('show'));
+                if(showInfo){
+                    document.getElementById("menu").classList.toggle('show');
+                }
+            })
+            // ------------------------------------------------------------
+            </script>
+        </nav>
+    </header>
+    <h1 class="Albert">Albert Valentino 10.1</h1>
+</body>
+</html>
